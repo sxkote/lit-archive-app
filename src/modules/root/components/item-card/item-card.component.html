@@ -1,0 +1,38 @@
+<div [ngSwitch]="item.type">
+  <a *ngSwitchCase="'Folder'" [routerLink]="[route]" [queryParams]="{ path: item.path }">
+    <p-card>
+      <div class="flex flex-column justify-content-center align-items-center align-content-center folder-box">
+        <i class="bi bi-folder-fill text-3xl"></i>
+        <div class="text-center">{{this.item.name}}</div>
+      </div>
+    </p-card>
+  </a>
+
+  <a *ngSwitchCase="'Image'" [href]="this.item.url" target="_blank">
+    <p-card>
+      <div class="flex flex-column justify-content-center align-items-center align-content-center file-box">
+        <img [src]="this.item.url" class="image" [alt]="this.item.name" loading="lazy"/>
+        <div>{{this.item.name}}</div>
+      </div>
+    </p-card>
+  </a>
+
+  <a *ngSwitchCase="'Video'" [href]="this.item.url" target="_blank">
+    <p-card>
+      <div class="flex flex-column justify-content-center align-items-center align-content-center file-box">
+        <video controls class="video lazy" preload="none" [poster]="item.poster" >
+          <source [attr.src]="item.url" type="video/mp4">
+        </video>
+        <div>{{this.item.name}}</div>
+      </div>
+    </p-card>
+  </a>
+
+  <a *ngSwitchCase="'File'" [href]="this.item.url" target="_blank">
+    <p-card>
+      <div class="flex flex-column justify-content-center align-items-center align-content-center file-box">
+        <div>{{this.item.name}}</div>
+      </div>
+    </p-card>
+  </a>
+</div>

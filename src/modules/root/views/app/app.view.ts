@@ -2,9 +2,9 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  templateUrl: './app.view.html',
+  styleUrls: ['./app.view.css']
 })
-export class AppComponent {
+export class AppView {
   title = 'LitArchiveAPP';
 }

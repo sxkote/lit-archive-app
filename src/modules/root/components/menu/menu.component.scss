@@ -1,0 +1,17 @@
+.menu {
+  height: var(--theme-menu-height);
+
+  .menu-link {
+    padding: 0.6em;
+    border-radius: var(--theme-border-radius);
+  }
+
+  .logo-link{
+    color: var(--color-main);
+    white-space: nowrap;
+  }
+
+  img.logo-image {
+    height: calc(var(--theme-menu-height) - 20px);
+  }
+}

@@ -1,0 +1,20 @@
+$max-folder-height: 100px;
+$max-file-height: 300px;
+
+div.folder-box {
+  height: $max-folder-height;
+}
+
+div.file-box {
+  height: $max-file-height;
+
+  img.image {
+    max-width: 100%;
+    max-height: $max-file-height;
+  }
+
+  .video {
+    max-width: 100%;
+    max-height: $max-file-height;
+  }
+}

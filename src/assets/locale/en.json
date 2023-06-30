@@ -1,0 +1,8 @@
+{
+  "menu": {
+    "sign-in": "Sign In",
+    "logout": "Logout",
+    "home": "Home",
+    "profile": "Profile"
+  }
+}
