@@ -26,6 +26,7 @@ import { LoginView } from './views/login/login.view';
 import {ImageLazyLoadingDirective} from "./directives/image-lazy-loading.directive";
 import { ProfileView } from './views/profile/profile.view';
 import { ItemCardComponent } from './components/item-card/item-card.component';
+import { RecoveryView } from './views/recovery/recovery.view';
 
 export function createTranslateLoader(http: HttpClient) {
   return new MultiTranslateHttpLoader(http, [
@@ -51,7 +52,8 @@ export function configServiceFactory(configService: ConfigurationService) {
     LoginView,
     ImageLazyLoadingDirective,
     ProfileView,
-    ItemCardComponent
+    ItemCardComponent,
+    RecoveryView
   ],
   imports: [
     CommonModule,

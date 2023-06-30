@@ -5,9 +5,11 @@ import {GalleryView} from "./views/gallery/gallery.view";
 import {LoginView} from "./views/login/login.view";
 import {AuthGuard} from "lbox-auth";
 import {ProfileView} from "./views/profile/profile.view";
+import {RecoveryView} from "./views/recovery/recovery.view";
 
 const routes: Routes = [
   {path: 'login', component: LoginView},
+  { path: 'recovery/:activity', component: RecoveryView },
   {path: '', component: GalleryView, canActivate: [AuthGuard]},
   {path: 'gallery', component: GalleryView, canActivate: [AuthGuard]},
   {path: 'profile', component: ProfileView, canActivate: [AuthGuard]},
