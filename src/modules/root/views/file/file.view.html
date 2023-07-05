@@ -16,11 +16,9 @@
       <video controls [src]="this.url" class="media"></video>
     </div>
 
-    <!--    <div *ngSwitchCase="'File'">-->
-    <!--      <div class="flex flex-column justify-content-center align-items-center align-content-center file-box">-->
-    <!--        {{this.path}}-->
-    <!--      </div>-->
-    <!--    </div>-->
+    <div *ngSwitchCase="'File'" class="media-container">
+      <iframe [src]="this.url" class="media" height="100%" width="100%" *ngIf="this.url"></iframe>
+    </div>
   </div>
 
 </div>

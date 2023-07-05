@@ -28,7 +28,7 @@
     </p-card>
   </a>
 
-  <a *ngSwitchCase="'File'" [href]="this.item.url" target="_blank">
+  <a *ngSwitchCase="'File'" [routerLink]="['/file']" [queryParams]="{ path: this.item.path }">
     <p-card>
       <div class="flex flex-column justify-content-center align-items-center align-content-center file-box">
         <div>{{this.item.name}}</div>
