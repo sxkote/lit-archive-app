@@ -8,7 +8,7 @@
     </p-card>
   </a>
 
-  <a *ngSwitchCase="'Image'" [href]="this.item.url" target="_blank">
+  <a *ngSwitchCase="'Image'" [routerLink]="['/file']" [queryParams]="{ path: this.item.path }">
     <p-card>
       <div class="flex flex-column justify-content-center align-items-center align-content-center file-box">
         <img [src]="this.item.url" class="image" [alt]="this.item.name" loading="lazy"/>
@@ -17,10 +17,10 @@
     </p-card>
   </a>
 
-  <a *ngSwitchCase="'Video'" [href]="this.item.url" target="_blank">
+  <a *ngSwitchCase="'Video'" [routerLink]="['/file']" [queryParams]="{ path: this.item.path }">
     <p-card>
       <div class="flex flex-column justify-content-center align-items-center align-content-center file-box">
-        <video controls class="video lazy" preload="none" [poster]="item.poster" >
+        <video controls class="video lazy" preload="none" [poster]="item.poster">
           <source [attr.src]="item.url" type="video/mp4">
         </video>
         <div>{{this.item.name}}</div>

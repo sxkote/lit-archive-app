@@ -37,6 +37,14 @@ export class PathContentComponent {
     })];
 
     const data = await this.archiveService.getArchiveData(this.path);
-    this.items.push(...data.items);
+    const sorted = data.items.sort((a, b) => {
+      if (a.type == "Folder")
+        return b.type == "Folder" ? (a.path < b.path ? -1 : 1) : -1;
+      if (b.type == "Folder")
+        return 1;
+      return a.path < b.path ? -1 : 1;
+    });
+
+    this.items.push(...sorted);
   }
 }

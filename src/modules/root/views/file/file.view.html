@@ -1,0 +1,28 @@
+<div *ngIf="this.path" class="file-block">
+  <div class="text-center p-2">
+    <!--    <span>{{this.path}}</span>-->
+    <la-path-links [path]="this.path" [isFile]="true"></la-path-links>
+  </div>
+  <!--  <div class="iframe-container">-->
+  <!--    <iframe [src]="this.url" class="h-full w-full brd" height="100%" width="100%"-->
+  <!--            style="overflow:hidden;height:100%;width:100%" *ngIf="this.url"></iframe>-->
+  <!--  </div>-->
+  <div [ngSwitch]="this.type" class="media-block">
+    <div *ngSwitchCase="'Image'" class="media-container">
+      <img [src]="this.url" class="media" [alt]="this.path"/>
+    </div>
+
+    <div *ngSwitchCase="'Video'" class="media-container">
+      <video controls [src]="this.url" class="media"></video>
+    </div>
+
+    <!--    <div *ngSwitchCase="'File'">-->
+    <!--      <div class="flex flex-column justify-content-center align-items-center align-content-center file-box">-->
+    <!--        {{this.path}}-->
+    <!--      </div>-->
+    <!--    </div>-->
+  </div>
+
+</div>
+
+

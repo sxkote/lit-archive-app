@@ -20,15 +20,15 @@ export class ArchiveItem {
   //   return this.type === "Folder";
   // }
   //
-  private isImage(): boolean {
-    const ext = this.extension?.toLowerCase() ?? "";
-    return ext == ".jpg" || ext == ".jpeg" || ext == ".png";
-  }
-
-  private isVideo(): boolean {
-    const ext = this.extension?.toLowerCase() ?? "";
-    return ext == ".mov" || ext == ".mpeg" || ext == ".mp4";
-  }
+  // private isImage(): boolean {
+  //   const ext = this.extension?.toLowerCase() ?? "";
+  //   return ext == ".jpg" || ext == ".jpeg" || ext == ".png";
+  // }
+  //
+  // private isVideo(): boolean {
+  //   const ext = this.extension?.toLowerCase() ?? "";
+  //   return ext == ".mov" || ext == ".mpeg" || ext == ".mp4";
+  // }
 
   constructor(data?: any, accessKey?: string) {
     if (!data) return;
@@ -41,17 +41,39 @@ export class ArchiveItem {
     const access = accessKey ?? 'none';
 
     if (this.isFile()) {
-      if (this.isImage())
-        this.type = "Image";
-      else if (this.isVideo()) {
-        this.type = "Video";
+      this.type = ArchiveItem.getFileType(this.extension);
+      if (this.type == "Video") {
         this.poster = `${environment.apiUrl}archive/poster?path=${this.path}&access=${access}`;
       }
 
       if (accessKey) {
         this.url = `${environment.apiUrl}files/${this.path}?access=${access}`;
-        //this.url = `${environment.apiUrl}archive/file/${accessKey}?path=${this.path}`;
       }
+    }
+  }
+
+  public static getExtension(path?: string): string {
+    if (!path) return "";
+    const lastPointIndex = path.lastIndexOf('.');
+    const extension = (lastPointIndex > 0) ? path.substring(lastPointIndex).toLowerCase() : path.toLowerCase();
+    console.log("Extension:", extension);
+    return extension;
+  }
+
+  public static getFileType(path?: string): TypeArchiveItem {
+    const extension = ArchiveItem.getExtension(path);
+    switch (extension) {
+      case ".jpg":
+      case ".jpeg":
+      case ".png":
+      case ".bmp":
+        return "Image";
+      case ".mov":
+      case ".mpeg":
+      case ".mp4":
+        return "Video"
+      default:
+        return "File";
     }
   }
 }

@@ -27,6 +27,9 @@ import {ImageLazyLoadingDirective} from "./directives/image-lazy-loading.directi
 import { ProfileView } from './views/profile/profile.view';
 import { ItemCardComponent } from './components/item-card/item-card.component';
 import { RecoveryView } from './views/recovery/recovery.view';
+import { FileView } from './views/file/file.view';
+import {BreadcrumbModule} from "primeng/breadcrumb";
+import { PathLinksComponent } from './components/path-links/path-links.component';
 
 export function createTranslateLoader(http: HttpClient) {
   return new MultiTranslateHttpLoader(http, [
@@ -53,34 +56,37 @@ export function configServiceFactory(configService: ConfigurationService) {
     ImageLazyLoadingDirective,
     ProfileView,
     ItemCardComponent,
-    RecoveryView
+    RecoveryView,
+    FileView,
+    PathLinksComponent
   ],
-  imports: [
-    CommonModule,
-    BrowserModule,
-    BrowserAnimationsModule,
-    HttpClientModule,
-    ButtonModule,
-    RippleModule,
-    StyleClassModule,
-    RouterLink,
-    RouterOutlet,
-    ToastModule,
-    InputTextModule,
-    FormsModule,
-    CardModule,
-    RootRoutingModule,
-    TranslateModule.forChild({
-      defaultLanguage: 'ru',
-      loader: {
-        provide: TranslateLoader,
-        useFactory: createTranslateLoader,
-        deps: [HttpClient],
-      },
-    }),
-    LBoxSharedModule,
-    LBoxAuthModule,
-  ],
+    imports: [
+        CommonModule,
+        BrowserModule,
+        BrowserAnimationsModule,
+        HttpClientModule,
+        ButtonModule,
+        RippleModule,
+        StyleClassModule,
+        RouterLink,
+        RouterOutlet,
+        ToastModule,
+        InputTextModule,
+        FormsModule,
+        CardModule,
+        RootRoutingModule,
+        TranslateModule.forChild({
+            defaultLanguage: 'ru',
+            loader: {
+                provide: TranslateLoader,
+                useFactory: createTranslateLoader,
+                deps: [HttpClient],
+            },
+        }),
+        LBoxSharedModule,
+        LBoxAuthModule,
+        BreadcrumbModule,
+    ],
   providers: [
     MessageService,
     { provide: TranslateStore },

@@ -10,7 +10,8 @@ import {PathContentComponent} from "../../components/path-content/path-content.c
 })
 export class GalleryView implements OnInit, AfterViewInit {
   @ViewChild('content') content!: PathContentComponent;
-  path:string = "\\";
+  isLoaded = true;
+  path: string = "\\";
 
   constructor(private archiveService: ArchiveService,
               private route: ActivatedRoute) {
@@ -22,6 +23,11 @@ export class GalleryView implements OnInit, AfterViewInit {
   async reload(path: string | undefined = undefined) {
     this.content?.reload(path);
     this.path = path ?? "\\";
+
+    this.isLoaded = false;
+    setTimeout(() => {
+      this.isLoaded = true;
+    }, 100);
   }
 
   async ngAfterViewInit() {
